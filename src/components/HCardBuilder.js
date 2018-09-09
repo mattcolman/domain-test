@@ -8,6 +8,16 @@ const Wrapper = styled.div`
   max-width: 1000px;
 `;
 
+const RightSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #e1e4e7;
+  padding: 20px;
+  flex-grow: 1;
+  max-width: 520px;
+`;
+
 class HCardBuilder extends Component {
   state = {
     firstName: '',
@@ -17,7 +27,7 @@ class HCardBuilder extends Component {
     houseName: '',
     street: '',
     suburb: '',
-    state: '',
+    addressState: '',
     postcode: '',
     country: ''
   };
@@ -30,7 +40,9 @@ class HCardBuilder extends Component {
     return (
       <Wrapper>
         <HCardForm onChange={this.handleChange} />
-        <PreviewCard />
+        <RightSide>
+          <PreviewCard {...this.state} />
+        </RightSide>
       </Wrapper>
     );
   }

@@ -1,3 +1,9 @@
 NOTES:
 
 Cannot use css grid due to IE10
+
+reasons I like styled-components.
+- removes css obscurities such as order of classnames
+- removes issue of global css conflicts
+- visually see the component is one file
+- composability
