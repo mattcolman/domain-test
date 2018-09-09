@@ -82,7 +82,7 @@ class PreviewCard extends Component {
           {name}
           <AvatarContainer>
             <img
-              width={82}
+              width={82} // it might be better not to stretch the image and crop it instead
               height={105}
               src={avatar || avatarPreview}
               alt="avatar"
