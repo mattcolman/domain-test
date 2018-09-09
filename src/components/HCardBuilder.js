@@ -1,14 +1,24 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import HCardForm from './HCardForm';
-import PreviewCard from './PreviewCard';
+import React, { Component } from "react";
+import styled from "styled-components";
+import HCardForm from "./HCardForm";
+import PreviewCard from "./PreviewCard";
 
 const Wrapper = styled.div`
   display: flex;
   max-width: 1000px;
+  @media (min-width: 320px) and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
-const RightSide = styled.div`
+const FormWrapper = styled.div`
+  max-width: 480px;
+  @media (min-width: 320px) and (max-width: 768px) {
+    max-width: none;
+  }
+`;
+
+const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,20 +26,24 @@ const RightSide = styled.div`
   padding: 20px;
   flex-grow: 1;
   max-width: 520px;
+  @media (min-width: 320px) and (max-width: 768px) {
+    max-width: none;
+  }
 `;
 
 class HCardBuilder extends Component {
   state = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    houseName: '',
-    street: '',
-    suburb: '',
-    addressState: '',
-    postcode: '',
-    country: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    houseName: "",
+    street: "",
+    suburb: "",
+    addressState: "",
+    postcode: "",
+    country: "",
+    avatar: null
   };
 
   handleChange = state => {
@@ -39,10 +53,12 @@ class HCardBuilder extends Component {
   render() {
     return (
       <Wrapper>
-        <HCardForm onChange={this.handleChange} />
-        <RightSide>
+        <FormWrapper>
+          <HCardForm onChange={this.handleChange} />
+        </FormWrapper>
+        <CardWrapper>
           <PreviewCard {...this.state} />
-        </RightSide>
+        </CardWrapper>
       </Wrapper>
     );
   }

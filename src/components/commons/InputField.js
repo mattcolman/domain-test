@@ -1,37 +1,34 @@
 // @flow
 
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
+// Using typescript or flow really improves the stability of your components
+// Prop types also act as documentation for others using shared components.
 type Props = {
-  helper?: string,
-  label: string,
-  maxLength?: number,
+  className?: string,
+  label?: string,
   name: string,
   onChange: string => void,
-  placeholder: string,
-  type?: 'email' | 'hidden' | 'number' | 'password' | 'tel' | 'text',
+  type?: "email" | "hidden" | "number" | "password" | "tel" | "text",
   value: ?number | ?string
 };
 
 const defaultProps = {
-  helper: undefined,
+  className: undefined,
   label: undefined,
-  maxLength: undefined,
-  placeholder: '',
-  type: 'text'
+  type: "text"
 };
 
 const Wrapper = styled.div``;
-const OuterDiv = styled.div``;
-const InnerDiv = styled.div`
+const InputWrapper = styled.div`
   display: flex;
 `;
 
 const FormLabel = styled.span`
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   color: #2c3e50;
 `;
 
@@ -46,14 +43,12 @@ const StyledInput = styled.input`
 
 function InputField({
   className,
-  helper,
   label,
-  maxLength,
-  placeholder,
   onChange,
   name,
   type,
-  value
+  value,
+  ...restProps
 }: Props) {
   return (
     <Wrapper className={className}>
@@ -62,22 +57,20 @@ function InputField({
           {label}
         </FormLabel>
       )}
-      <OuterDiv>
-        <InnerDiv>
-          <StyledInput
-            id={name}
-            type={type}
-            name={name}
-            onChange={e => onChange(e.target.value)}
-            placeholder={placeholder}
-            value={value}
-            maxLength={maxLength}
-          />
-        </InnerDiv>
-        {helper && <span>{helper}</span>}
-      </OuterDiv>
+      <InputWrapper>
+        <StyledInput
+          id={name}
+          type={type}
+          name={name}
+          onChange={e => onChange(e.target.value)}
+          value={value}
+          {...restProps}
+        />
+      </InputWrapper>
     </Wrapper>
   );
 }
+
+InputField.defaultProps = defaultProps;
 
 export default InputField;

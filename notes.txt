@@ -7,3 +7,11 @@ reasons I like styled-components.
 - removes issue of global css conflicts
 - visually see the component is one file
 - composability
+
+- form validation will come from the backend, however we could also add some frontend validation.
+for example validating a valid email address.
+
+- we could add an autocomplete to the Country field to select from all countries in the world, but this information
+would also come from the backend.
+
+- Should use a ThemeProvider

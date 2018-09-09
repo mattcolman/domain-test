@@ -1,23 +1,26 @@
 // @flow
 
-import * as React from 'react';
-import styled from 'styled-components';
+import * as React from "react";
+import styled from "styled-components";
 
-type Props = {};
+type Props = {
+  className?: string,
+  label: string,
+  value: string
+};
 
 const Wrapper = styled.div`
   display: flex;
   border-bottom: 1px solid #dbe0e2;
   flex-grow: 1;
-  align-items: center;
-  line-height: 2rem;
+  align-items: flex-end;
   min-height: 2rem;
 `;
 
 const Label = styled.span`
   color: #2c3e50;
   text-transform: uppercase;
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   font-size: 0.6rem;
   min-width: 5rem;
 `;
