@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  background-color: #2c3e50;
+  background-color: ${props => props.theme.color.darkBlue};
   height: 100px;
   padding: 1rem;
   color: white;
@@ -25,7 +25,7 @@ const TopText = styled.span`
   align-self: flex-end;
   color: #aebabc;
   text-transform: uppercase;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: ${props => props.theme.font.sans};
 `;
 
 const Body = styled.div`

@@ -12,9 +12,9 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.span`
-  color: #2c3e50;
+  color: ${props => props.theme.color.darkBlue};
   font-size: 1.75rem;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: ${props => props.theme.font.sans};
   font-weight: 800;
 `;
 
@@ -47,7 +47,7 @@ const Section = styled.div`
   font-size: 0.6rem;
   flex-basis: 100%;
   font-weight: 700;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: ${props => props.theme.font.sans};
   margin: 1.5em 0;
 `;
 
@@ -59,16 +59,16 @@ const CommonButton = styled.button`
   flex-grow: 1;
   padding: 0.3rem 0.3rem;
   width: 100%;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: ${props => props.theme.font.sans};
 `;
 
 // I love how easy it is to compose styled-components!
 const PrimaryButton = styled(CommonButton)`
-  background-color: #3498db;
+  background-color: ${props => props.theme.color.primary};
 `;
 
 const SecondaryButton = styled(CommonButton)`
-  background-color: #627b8b;
+  background-color: ${props => props.theme.color.secondary};
 `;
 
 function GridInputField(props) {

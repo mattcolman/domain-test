@@ -20,9 +20,9 @@ const Wrapper = styled.div`
 
 const Label = styled.div`
   padding-top: 0.5rem;
-  color: #2c3e50;
+  color: {props => props.theme.color.darkBlue}
   text-transform: uppercase;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: ${props => props.theme.font.sans};
   font-size: 0.6rem;
   min-width: 5rem;
 `;

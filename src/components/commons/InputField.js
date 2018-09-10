@@ -29,8 +29,8 @@ const InputWrapper = styled.div`
 const FormLabel = styled.span`
   text-transform: uppercase;
   font-size: 0.75rem;
-  font-family: "Merriweather Sans", sans-serif;
-  color: #2c3e50;
+  font-family: ${props => props.theme.font.sans};
+  color: ${props => props.theme.color.darkBlue};
 `;
 
 const StyledInput = styled.input`
@@ -38,7 +38,7 @@ const StyledInput = styled.input`
   border: 1px solid #c3c3c3;
   padding: 0.3em;
   min-width: 0;
-  color: #000;
+  color: black;
   width: 100%;
 `;
 
