@@ -18,7 +18,7 @@ const Title = styled.span`
   font-weight: 800;
 `;
 
-// I might like to use css-grid here but it's not supported in ie10
+// I might like to use css-grid here but it's not fully supported in ie10
 const Grid = styled.div`
   margin: 0 -0.3em;
   flex-wrap: wrap;
@@ -27,8 +27,9 @@ const Grid = styled.div`
 
 const GridCol = styled.div`
   flex-basis: 50%;
-  min-width: 0;
-  flex-grow: 0;
+`;
+
+const GridColInner = styled.div`
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
 `;
@@ -36,8 +37,6 @@ const GridCol = styled.div`
 const Footer = styled(Grid)`
   padding-top: 1rem;
 `;
-
-const StyledInputField = GridCol.withComponent(InputField);
 
 const Form = styled.form``;
 
@@ -72,6 +71,16 @@ const SecondaryButton = styled(CommonButton)`
   background-color: #627b8b;
 `;
 
+function GridInputField(props) {
+  return (
+    <GridCol>
+      <GridColInner>
+        <InputField {...props} />
+      </GridColInner>
+    </GridCol>
+  );
+}
+
 class HCardForm extends Component {
   // memoize by the field key so we don't have to create new functions with each render
   handleFieldChange = memoize((key: string) => (value: string) => {
@@ -100,28 +109,28 @@ class HCardForm extends Component {
         <Form>
           <Section>Personal Details</Section>
           <Grid>
-            <StyledInputField
+            <GridInputField
               label="Given Name"
               onChange={this.handleFieldChange("firstName")}
               type="text"
               value={firstName}
               name="given-name"
             />
-            <StyledInputField
+            <GridInputField
               label="Surname"
               onChange={this.handleFieldChange("lastName")}
               type="text"
               value={lastName}
               name="family-name"
             />
-            <StyledInputField
+            <GridInputField
               label="Email"
               onChange={this.handleFieldChange("email")}
               type="email"
               value={email}
               name="email"
             />
-            <StyledInputField
+            <GridInputField
               label="Phone"
               onChange={this.handleFieldChange("phone")}
               type="tel"
@@ -131,41 +140,41 @@ class HCardForm extends Component {
           </Grid>
           <Section>Address</Section>
           <Grid>
-            <StyledInputField
+            <GridInputField
               label="House name or #"
               onChange={this.handleFieldChange("houseName")}
               type="text"
               value={houseName}
               name="street-address"
             />
-            <StyledInputField
+            <GridInputField
               label="Street"
               onChange={this.handleFieldChange("street")}
               type="text"
               value={street}
             />
-            <StyledInputField
+            <GridInputField
               label="Suburb"
               onChange={this.handleFieldChange("suburb")}
               type="text"
               value={suburb}
               name="address-level2"
             />
-            <StyledInputField
+            <GridInputField
               label="State"
               onChange={this.handleFieldChange("addressState")}
               type="text"
               value={addressState}
               name="address-level1"
             />
-            <StyledInputField
+            <GridInputField
               label="Postcode"
               onChange={this.handleFieldChange("postcode")}
               type="text"
               value={postcode}
               name="postal-code"
             />
-            <StyledInputField
+            <GridInputField
               label="Country"
               onChange={this.handleFieldChange("country")}
               type="text"
@@ -175,25 +184,29 @@ class HCardForm extends Component {
           </Grid>
           <Footer>
             <GridCol>
-              <ImageUploader
-                onLoad={this.handleFieldChange("avatar")}
-                renderButton={clickHandler => (
-                  <SecondaryButton type="button" onClick={clickHandler}>
-                    Upload Avatar
-                  </SecondaryButton>
-                )}
-              />
+              <GridColInner>
+                <ImageUploader
+                  onLoad={this.handleFieldChange("avatar")}
+                  renderButton={clickHandler => (
+                    <SecondaryButton type="button" onClick={clickHandler}>
+                      Upload Avatar
+                    </SecondaryButton>
+                  )}
+                />
+              </GridColInner>
             </GridCol>
             <GridCol>
-              <PrimaryButton
-                type="submit"
-                onClick={e => {
-                  e.preventDefault();
-                  console.log("create hcard!");
-                }}
-              >
-                Create hCard
-              </PrimaryButton>
+              <GridColInner>
+                <PrimaryButton
+                  type="submit"
+                  onClick={e => {
+                    e.preventDefault();
+                    console.log("create hcard!");
+                  }}
+                >
+                  Create hCard
+                </PrimaryButton>
+              </GridColInner>
             </GridCol>
           </Footer>
         </Form>

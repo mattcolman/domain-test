@@ -23,6 +23,7 @@ const defaultProps = {
 const Wrapper = styled.div``;
 const InputWrapper = styled.div`
   display: flex;
+  min-width: 0;
 `;
 
 const FormLabel = styled.span`
@@ -33,12 +34,12 @@ const FormLabel = styled.span`
 `;
 
 const StyledInput = styled.input`
-  flex-grow: 1;
   border-radius: 2px;
   border: 1px solid #c3c3c3;
   padding: 0.3em;
   min-width: 0;
   color: #000;
+  width: 100%;
 `;
 
 function InputField({

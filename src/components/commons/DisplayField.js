@@ -9,15 +9,17 @@ type Props = {
   value: string
 };
 
+// ie10 only has partial support for flexbox. alignItems: flex-end doesn't work.
 const Wrapper = styled.div`
+  padding-top: 1rem;
   display: flex;
-  border-bottom: 1px solid #dbe0e2;
   flex-grow: 1;
-  align-items: flex-end;
-  min-height: 2rem;
+  border-bottom: 1px solid #dbe0e2;
+  min-height: 2.25rem;
 `;
 
-const Label = styled.span`
+const Label = styled.div`
+  padding-top: 0.5rem;
   color: #2c3e50;
   text-transform: uppercase;
   font-family: "Merriweather Sans", sans-serif;

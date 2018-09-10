@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 
 const FormWrapper = styled.div`
   max-width: 480px;
+  flex-grow: 1;
   @media (min-width: 320px) and (max-width: 768px) {
     max-width: none;
   }

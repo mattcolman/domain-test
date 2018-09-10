@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+// a really simple ImageUploader component.
+// to complete this component we would need to
+// address image orientation, possibly allow the
+// user to crop the image, and then base64 encode
+// the result to post it to the backend.
 const Wrapper = styled.div`
   position: relative;
 `;
